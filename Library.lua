@@ -1,4 +1,4 @@
--- Credits to Rain-Design for Library Template
+-- This is a fork from Rain-Design's UI Library 
 local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
