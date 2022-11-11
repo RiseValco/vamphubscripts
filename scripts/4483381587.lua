@@ -6,7 +6,7 @@ Y8    8P 88ooo88 88  88  88 88oodD' 88ooo88 88    88 88oooY'
  `8bd8'  88   88 88  88  88 88      88   88 88b  d88 88   8D 
    YP    YP   YP YP  YP  YP 88      YP   YP ~Y8888P' Y8888P'
 ]]--
--- [[ MIT Copyright @ 2022 Vamp Hub ]]--
+-- [[ GNU General Public License @ 2022 Vamp Hub ]]--
 -- https://www.roblox.com/games/4483381587/a-literal-baseplate
 local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/RiseValco/vamphubscripts/main/Library.lua'))()
 local Flags = Library.Flags
