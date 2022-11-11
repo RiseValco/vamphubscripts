@@ -1289,7 +1289,7 @@ sliderButton.MouseButton1Down:Connect(function() -- Skidded from material ui heh
 	MouseMove = Mouse.Move:Connect(function()
 		local Px = library:GetXY(outerSlider)
 		local SizeFromScale = (MinSize +  (MaxSize - MinSize)) * Px
-		local Value = tonumber(string.format("%g",string.format("%.1f",(Info.Minimum + ((Info.Maximum - Info.Minimum) * Px))))
+		local Value = math.floor(Info.Minimum + ((Info.Maximum - Info.Minimum) * Px))
 		SizeFromScale = SizeFromScale - (SizeFromScale % 2)
 		TweenService:Create(innerSlider, TweenInfo.new(0.1), {Size = UDim2.new(Px,0,0,4)}):Play()
 		if Info.Flag ~= nil then
