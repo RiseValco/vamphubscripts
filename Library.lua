@@ -1231,7 +1231,7 @@ sliderCorner.Parent = outerSlider
 
 local innerSlider = Instance.new("Frame")
 innerSlider.Name = "InnerSlider"
-innerSlider.BackgroundColor3 = Color3.fromRGB(48, 207, 106)
+innerSlider.BackgroundColor3 = Color3.fromRGB(90, 29, 217)
 innerSlider.BorderSizePixel = 0
 innerSlider.Size = UDim2.new(DefaultScale, 0, 0, 4)
 innerSlider.ZIndex = 2
