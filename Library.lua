@@ -44,7 +44,8 @@ end
 end)
 
 local library = {
-    Flags = {}
+    Flags = {},
+	Discord = "S7kGxh3aBV"
 }
 
 local request = syn and syn.request or http and http.request or http_request or request or httprequest
