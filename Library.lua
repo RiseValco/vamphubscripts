@@ -1136,7 +1136,7 @@
             keybindFrameText.Text = "..."
             KeybindConnection = UserInputService.InputBegan:Connect(function(Key, gameProcessed)
                 if not table.find(Blacklist, Key.KeyCode) and not gameProcessed then
-                    if (string.find(tostring(Key.UserInputType, "MouseButton")) ~= nil) then
+                    if (string.find(tostring(Key.UserInputType), "MouseButton") ~= nil) then
                         KeybindConnection:Disconnect()
                         keybindFrameText.Text = Key.KeyCode.Name
                         PressKey = Key.UserInputType
@@ -1167,7 +1167,7 @@
                         end
                     end)    
                 end
-            else if (string.find(tostring(Key.UserInputType, "MouseButton")) ~= nil) then
+            else if (string.find(tostring(Key.UserInputType), "MouseButton") ~= nil) then
                 if not Changing and Key.UserInputType == PressKey.UserInputType and not gameProcessed then
                     HOLDING = true
                     task.spawn(function()
@@ -1185,7 +1185,7 @@
                 if not Changing and Key.KeyCode == PressKey and not gameProcessed then
                     HOLDING = false
                 end
-            else if (string.find(tostring(Key.UserInputType, "MouseButton")) ~= nil) then
+            else if (string.find(tostring(Key.UserInputType), "MouseButton") ~= nil) then
                 if not Changing and Key.UserInputType == PressKey.UserInputType and not gameProcessed then
                     HOLDING = false
                 end
