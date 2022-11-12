@@ -481,7 +481,7 @@ editButton.MouseButton1Click:Connect(function()
         for frame, v in pairs(ColorElements) do
             if v.Enabled then
                 if frame.ClassName == "Frame" then
-                TweenService:Create(frame, TweenInfo.new(.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(48, 207, 106)}):Play()
+                TweenService:Create(frame, TweenInfo.new(.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(255, 105, 180)}):Play()
                 else
                 TweenService:Create(frame, TweenInfo.new(.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {ImageColor3 = Color3.fromRGB(48, 207, 106)}):Play()
                 end
