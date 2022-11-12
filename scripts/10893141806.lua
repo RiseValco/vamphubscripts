@@ -24,7 +24,7 @@ local LocalTab = Window:Tab({
 })
 
 local AutoFunctionsrSection = LocalTab:Section({
-    Text = "Functions"
+    Text = "Auto Functions"
 })
 
 local TrollingSection = LocalTab:Section({
