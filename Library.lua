@@ -1094,7 +1094,7 @@
         local keybindFrameText = Instance.new("TextLabel")
         keybindFrameText.Name = "KeybindFrameText"
         keybindFrameText.Font = Enum.Font.GothamBold
-        keybindFrameText.Text = PressKey.Name
+        keybindFrameText.Text = PrefixKey[PressKey.Name]
         keybindFrameText.TextColor3 = Color3.fromRGB(217, 217, 217)
         keybindFrameText.TextSize = 11
         keybindFrameText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1136,21 +1136,23 @@
             Changing = true
             keybindFrameText.Text = "..."
             KeybindConnection = UserInputService.InputBegan:Connect(function(Key, gameProcessed)
-                if not table.find(Blacklist, Key.KeyCode) and not gameProcessed then
-                    if (string.find(tostring(Key.UserInputType), "MouseButton") ~= nil) then
+                if (string.find(tostring(Key.UserInputType), "MouseButton") ~= nil) then
+                    if not table.find(Blacklist, Key.UserInputType) and not gameProcessed then
                         KeybindConnection:Disconnect()
                         keybindFrameText.Text = PrefixKey[Key.UserInputType.Name]
                         PressKey = Key.UserInputType
                         wait(.1)
                         Changing = false
-                    else if Key.UserInputType == Enum.UserInputType.Keyboard then
+                    end
+                else if Key.UserInputType == Enum.UserInputType.Keyboard then
+                    if not table.find(Blacklist, Key.KeyCode) and not gameProcessed then
                         KeybindConnection:Disconnect()
                         keybindFrameText.Text = Key.KeyCode.Name
                         PressKey = Key.KeyCode
                         wait(.1)
                         Changing = false
                     end
-                    end
+                end
                 end
             end)
         end)
@@ -1169,7 +1171,7 @@
                     end)    
                 end
             else if (string.find(tostring(Key.UserInputType), "MouseButton") ~= nil) then
-                if not Changing and Key.UserInputType == PressKey.UserInputType and not gameProcessed then
+                if not Changing and Key.UserInputType == PressKey and not gameProcessed then
                     HOLDING = true
                     task.spawn(function()
                         while HOLDING do
@@ -1187,7 +1189,7 @@
                     HOLDING = false
                 end
             else if (string.find(tostring(Key.UserInputType), "MouseButton") ~= nil) then
-                if not Changing and Key.UserInputType == PressKey.UserInputType and not gameProcessed then
+                if not Changing and Key.UserInputType == PressKey and not gameProcessed then
                     HOLDING = false
                 end
             end
