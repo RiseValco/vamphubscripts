@@ -1136,11 +1136,20 @@
             keybindFrameText.Text = "..."
             KeybindConnection = UserInputService.InputBegan:Connect(function(Key, gameProcessed)
                 if not table.find(Blacklist, Key.KeyCode) and not gameProcessed then
-                    KeybindConnection:Disconnect()
-                    keybindFrameText.Text = Key.KeyCode.Name
-                    PressKey = Key.KeyCode
-                    wait(.1)
-                    Changing = false
+                    if (string.find(tostring(Key.UserInputType, "MouseButton")) ~= nil) then
+                        KeybindConnection:Disconnect()
+                        keybindFrameText.Text = Key.KeyCode.Name
+                        PressKey = Key.UserInputType
+                        wait(.1)
+                        Changing = false
+                    else if Key.UserInputType == Enum.UserInputType.Keyboard then
+                        KeybindConnection:Disconnect()
+                        keybindFrameText.Text = Key.KeyCode.Name
+                        PressKey = Key.KeyCode
+                        wait(.1)
+                        Changing = false
+                    end
+                    end
                 end
             end)
         end)
@@ -1148,22 +1157,39 @@
         local HOLDING = false
 
         UserInputService.InputBegan:Connect(function(Key, gameProcessed)
-            if not Changing and Key.KeyCode == PressKey and not gameProcessed then
-                HOLDING = true
-                task.spawn(function()
-                    while HOLDING do
-                        pcall(Info.Callback)
-                        wait()
-                    end
-                end)    
+            if (Key.UserInputType == Enum.UserInputType.Keyboard) then
+                if not Changing and Key.KeyCode == PressKey and not gameProcessed then
+                    HOLDING = true
+                    task.spawn(function()
+                        while HOLDING do
+                            pcall(Info.Callback)
+                            wait()
+                        end
+                    end)    
+                end
+            else if (string.find(tostring(Key.UserInputType, "MouseButton")) ~= nil) then
+                if not Changing and Key.UserInputType == PressKey.UserInputType and not gameProcessed then
+                    HOLDING = true
+                    task.spawn(function()
+                        while HOLDING do
+                            pcall(Info.Callback)
+                            wait()
+                        end
+                    end)    
+                end
+            end
             end
         end)
         UserInputService.InputEnded:Connect(function(Key, gameProcessed)
-            if not Changing and Key.KeyCode == PressKey and not gameProcessed then
-                -- task.spawn(function()
-                --     pcall(Info.Callback)
-                -- end)
-                HOLDING = false
+            if Key.UserInputType == Enum.UserInputType.Keyboard then
+                if not Changing and Key.KeyCode == PressKey and not gameProcessed then
+                    HOLDING = false
+                end
+            else if (string.find(tostring(Key.UserInputType, "MouseButton")) ~= nil) then
+                if not Changing and Key.UserInputType == PressKey.UserInputType and not gameProcessed then
+                    HOLDING = false
+                end
+            end
             end
         end)
 
