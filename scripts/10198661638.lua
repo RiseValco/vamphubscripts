@@ -106,7 +106,7 @@ MGSection:Label({
 })
 
 MGSection:Input({
-    Placeholder = "2 (MAX 200)",
+    Placeholder = "(MAX 200)",
     Tooltip = "EXAMPLE: MoneyGiver x 2",
     Callback = function(v)
          v = tonumber(v)
